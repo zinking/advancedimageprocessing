@@ -325,8 +325,8 @@ int DIPClass::And( IplImage*marker, IplImage* mask, IplImage* result){
 				setGrayPixel( marker,x,y, 0 );
 			} 
 			else if ( maskPixel == 255 ){
-				setGrayPixel( result,x,y, markerPixel );
-				setGrayPixel( marker,x,y, markerPixel );
+				setGrayPixel( result,x,y, 255 );
+				setGrayPixel( marker,x,y, 255 );
 				ShileldedPixelCount++;
 			}
 			

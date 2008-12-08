@@ -27,6 +27,7 @@ public:
 	static Kernel getDefaultKernel();
 	static Kernel getDiskKernel();
 	static Kernel getDiamondKernel();
+	static Kernel getR10DiskKernel();
 
 	//int KernelSize;
 private:

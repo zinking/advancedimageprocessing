@@ -13,14 +13,16 @@ Kernel::Kernel( int w, int h )
 }
 
 float Kernel::getKernelValue(int x,int y )const{
-	return data[ x*width + y ];
+	//return data[ x*width + y ];
+	return data[ y*width + x ];
 }
 float Kernel::getTransKernelValue( int x, int y ) const{
 
 	int II = 2* centerX - x;
 	int JJ = 2* centerY - y;
 	if ( !AssertValid( II,JJ ) ) return 0;//如果在转置的时候出错，那么返回一个默认值
-	return data[ II*width + JJ ];
+	//return data[ II*width + JJ ];
+	return data[ JJ*width + II ];
 }
 
 void Kernel::setKernelValue( const float* ptr ){
@@ -50,6 +52,21 @@ Kernel::~Kernel(void){
 	return *ker;
 
 }
+
+ Kernel Kernel::getR10DiskKernel(){
+	 Kernel* ker = new Kernel( 10 , 10 );
+	 float kData[] = 
+	 { 
+		 0,0,0,0,1,1,0,0,0,0,
+		 0,0,0,1,1,1,1,0,0,0,
+		 0,0,1,1,1,1,1,1,0,0,
+		 0,0,0,1,1,1,1,0,0,0,
+		 0,0,0,0,1,1,0,0,0,0
+	 };
+	 ker->setKernelValue( kData );
+	 return *ker;
+
+ }
  Kernel Kernel::getDiamondKernel(){
 	Kernel* ker = new Kernel( 5 , 5 );
 	float kData[] = 
