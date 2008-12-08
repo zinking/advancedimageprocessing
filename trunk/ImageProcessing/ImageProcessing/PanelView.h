@@ -73,6 +73,10 @@ public:
 	afx_msg void OnBnClickedBtncond();
 	afx_msg void OnBnClickedBtngrayre();
 	afx_msg void OnBnClickedBtnLdmask();
+public:
+	//afx_msg void OnBnClickedBtnMode();
+public:
+	afx_msg void OnBnClickedBtnCbr();
 };
 
 

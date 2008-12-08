@@ -482,10 +482,10 @@ void CMainFrame::OnMorphologyGrayScaleReconstruction(void){
 	IplImage* mask ;
 
 
-	if ( maskfile_path != ""   ){
+	if ( maskfile_path != ""   ){//如果装载了MASK 那么使用装载的MASK
 		mask = maskImage.GetImage();
 	}
-	else{
+	else{//如果没有装载MASK，那么MASK使用原图，而MARKER使用做OPEN操作后的MARKER
 		mask = loadImage.GetImage();
 		Kernel k(30,1);
 		dip.Open( prepare,marker,k );//做好MARKER
@@ -498,9 +498,35 @@ void CMainFrame::OnMorphologyGrayScaleReconstruction(void){
 	cvReleaseImage( & prepare );
 	maskfile_path = "";
 
-
-
 	RenderToWindow( marker );
+}
+
+void CMainFrame::OnMorphologyOBR(void){
+	IplImage* marker = cvCloneImage(  srcImage->GetImage() );
+	IplImage* prepare = cvCloneImage(  srcImage->GetImage() );
+	IplImage* mask = cvCloneImage(  srcImage->GetImage() );
+	Kernel k = Kernel::getR10DiskKernel();
+
+	dip.Open( prepare,marker,k );
+	dip.GrayScaleRestoration( marker,mask );
+	RenderToWindow( marker );
+	cvReleaseImage( & prepare );
+	cvReleaseImage( & mask );
+	
+}
+
+void CMainFrame::OnMorphologyCBR(void){
+
+	IplImage* marker = cvCloneImage(  srcImage->GetImage() );
+	IplImage* prepare = cvCloneImage(  srcImage->GetImage() );
+	IplImage* mask = cvCloneImage(  srcImage->GetImage() );
+	Kernel k = Kernel::getR10DiskKernel();
+
+	dip.Close( prepare,marker,k );
+	dip.GrayScaleRestoration( marker,mask );
+	RenderToWindow( marker );
+	cvReleaseImage( & prepare );
+	cvReleaseImage( & mask );
 }
 
 void CMainFrame::OnMorphologyLoadMaskFile(void){
@@ -514,6 +540,8 @@ void CMainFrame::OnMorphologyLoadMaskFile(void){
 		cvShowImage( "MASKIMGE", maskImage.GetImage() );
 	}
 }
+
+
 
 
 //CvvImage maskimg;

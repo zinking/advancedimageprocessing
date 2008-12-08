@@ -57,6 +57,8 @@ ON_BN_CLICKED(IDC_BTNEDGE, &CPanelView::OnBnClickedBtnedge)
 ON_BN_CLICKED(IDC_BTNCOND, &CPanelView::OnBnClickedBtncond)
 ON_BN_CLICKED(IDC_BTNGRAYRE, &CPanelView::OnBnClickedBtngrayre)
 ON_BN_CLICKED(IDC_BTN_LDMASK, &CPanelView::OnBnClickedBtnLdmask)
+//ON_BN_CLICKED(IDC_BTN_MODE, &CPanelView::OnBnClickedBtnMode)
+ON_BN_CLICKED(IDC_BTN_CBR, &CPanelView::OnBnClickedBtnCbr)
 END_MESSAGE_MAP()
 
 
@@ -256,4 +258,16 @@ void CPanelView::OnBnClickedBtnLdmask()
 {
 	CMainFrame* MainFrame=(CMainFrame*)this->GetParent()->GetParent();
 	MainFrame->OnMorphologyLoadMaskFile();
+}
+
+//void CPanelView::OnBnClickedBtnMode()
+//{
+//	CMainFrame* MainFrame=(CMainFrame*)this->GetParent()->GetParent();
+//	MainFrame->OnMorphologyLoadMaskFile();
+//}
+
+void CPanelView::OnBnClickedBtnCbr()
+{
+	CMainFrame* MainFrame=(CMainFrame*)this->GetParent()->GetParent();
+	MainFrame->OnMorphologyCBR();
 }

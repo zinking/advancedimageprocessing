@@ -28,7 +28,8 @@
 #define IDC_BTNGRAYRE                   1017
 #define IDC_BTN_LDMASK                  1018
 #define IDC_BUTTON2                     1019
-#define IDC_BTN_MODE                    1019
+#define IDC_BTN_MODE                    1100
+#define IDC_BTN_CBR                     1019
 #define ID_CONVOLUTION_GAUSSIAN         32771
 #define ID_CONVOLUTION_SOBEL            32772
 #define ID_MORPHOLOGY                   32773

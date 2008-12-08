@@ -80,6 +80,8 @@ public:
 	void OnMorphologyConditionDialation(void);
 	void OnMorphologyGrayScaleReconstruction(void);
 	void OnMorphologyLoadMaskFile(void);
+	void OnMorphologyCBR(void);
+	void OnMorphologyOBR(void);
 	afx_msg void OnApplresult();
 };
 
